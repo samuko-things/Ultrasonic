@@ -16,7 +16,7 @@
 
 class Ultrasonic {    
     public:
-        Ultrasonic(int tp, int ep);
+        Ultrasonic(int tp, int ep, int timeout_ms=20);
         long timing();
         float convert(long microsec, int metric);
         void setDivisor(float value, int metric);
@@ -27,6 +27,7 @@ class Ultrasonic {
     private:
         int _trigPin;
         int _echoPin;
+        int _timeoutMs
         float _cmDivisor;
         float _inDivisor;
 };

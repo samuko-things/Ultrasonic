@@ -16,12 +16,14 @@
  * 
  * @param tp Pin to Trigger
  * @param ep Pin to Echo
+ * @param timeout_ms Pulse timeout
  */
-Ultrasonic::Ultrasonic(int tp, int ep) {
+Ultrasonic::Ultrasonic(int tp, int ep, int timeout_ms) {
     pinMode(tp, OUTPUT);
     pinMode(ep, INPUT);
     _trigPin = tp;
     _echoPin = ep;
+    _timeoutMs = timeout_ms;
     _cmDivisor = 27.6233;
     _inDivisor = 70.1633;
 }
@@ -37,7 +39,7 @@ long Ultrasonic::timing() {
     digitalWrite(_trigPin, HIGH);
     delayMicroseconds(10);
     digitalWrite(_trigPin, LOW);
-    return pulseIn(_echoPin, HIGH);
+    return pulseIn(_echoPin, HIGH, _timeoutMs*1000);
 }
 
 /**
