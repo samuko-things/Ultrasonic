@@ -27,7 +27,7 @@ class Ultrasonic {
     private:
         int _trigPin;
         int _echoPin;
-        int _timeoutMs
+        int _timeoutMs;
         float _cmDivisor;
         float _inDivisor;
 };
